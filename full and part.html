@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPortal - Find Your Dream Job</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: black;
+            padding: 10px;
+            box-shadow: 0 4px 6px rgba(0, 255, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 50px;
+            display: flex;
+            font-weight: bold;
+        }
+
+        .logo span {
+            background: white;
+            color: #134e4a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #0f0;
+        }
+
+        .contaminated{
+            display: flex;
+            justify-content: center;  
+            align-items: center;
+        }
+
+        .search-container {
+            width: 350px;       /* adjust width */
+            margin: 10px;
+            position: relative; /* so the button can be positioned inside */
+            text-align: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 10px 45px 10px 15px; /* leave space on right for button */
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            text-align: left;
+            box-sizing: border-box;
+            background: black;
+        }
+
+        .search-container input[type="text"]::placeholder {
+            color: white;
+        }
+
+        .search-container button {
+            position: absolute;
+            right: 8px;          /* position inside box */
+            top: 50%;
+            transform: translateY(-50%);
+            background: green; /* Google blue */
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #357ae8;
+        }
+
+        .job-tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .tab-btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            background: #111;
+            border: 1px solid green;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px 8px 0 0;
+            margin: 0 5px;
+            box-shadow: 0 -2px 5px rgba(0, 255, 0, 0.05);
+        }
+
+        .tab-btn.active {
+            background: green;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .filters {
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 255, 0, 0.05);
+            border: 1px solid green;
+        }
+
+        .filter-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-option {
+            background: #222;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid green;
+        }
+
+        .filter-option:hover {
+            background: green;
+        }
+
+        .filter-option.active {
+            background: green;
+            color: black;
+        }
+
+        .job-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .job-card {
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 255, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid green;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 255, 0, 0.15);
+        }
+
+        .job-header {
+            padding: 20px;
+            border-bottom: 1px solid green;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .job-company {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .company-logo {
+            width: 50px;
+            height: 50px;
+            background: green;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #000;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .company-info h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: green;
+        }
+
+        .company-info p {
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .job-details {
+            padding: 20px;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .meta-item i {
+            margin-right: 5px;
+            color: green;
+        }
+
+        .job-type {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .type-fulltime {
+            background: green;
+            color: #000;
+        }
+
+        .type-parttime {
+            background: green;
+            color: #000;
+        }
+
+        .job-salary {
+            font-size: 18px;
+            font-weight: 700;
+            color: green;
+            margin: 15px 0;
+        }
+
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .apply-btn {
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .apply-btn:hover {
+            background: green;
+            color: #000;
+        }
+
+        .save-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .save-btn:hover {
+            color: #0f0;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid green;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: green;
+        }
+
+        .footer-section p {
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #0f0;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: #ccc;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0f0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 10px;
+            }
+
+            .job-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .tab-btn {
+                width: 100%;
+                margin-bottom: 5px;
+                border-radius: 8px;
+            }
+
+            .job-listings {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .close{
+            padding: 10px;
+            text-align: center;
+        }
+
+        .back-btn{
+            color: white;
+            padding: 10px;
+        }
+
+        .back-btn:hover{
+            color: green;
+        }
+
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+        .fa:hover {
+                opacity: 0.7;
+        }
+
+        .fa-facebook {
+            /* background: #3B5998; */
+            color: white;
+        }
+
+        .fa-twitter {
+            /* background: #55ACEE; */
+            color: white;
+        }
+
+        .fa-linkedin {
+            /* background: #007bb5; */
+            color: white;
+        }
+
+        .fa-instagram {
+            /* background: #125688; */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+                <div class="logo">
+                    <span>Job</span> Sphere
+                </div>
+        </div>
+        <div class="contaminated">
+            <div class="search-container">
+                <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" name="q" placeholder="Search on JobSphere...">
+                <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+             <div class="close"><a class="back-btn" href="deep1.html">← Go Back</a></div>    
+    </header>
+
+    <main class="container">
+        <div class="job-tabs">
+            <button class="tab-btn active" data-tab="full-time">Full-Time Jobs</button>
+            <button class="tab-btn" data-tab="part-time">Part-Time Jobs</button>
+        </div>
+
+        <!-- Full-Time Jobs Section -->
+        <div id="full-time" class="tab-content active">
+            <div class="filters">
+                <h3 class="filter-title">Filter By:</h3>
+                <div class="filter-options">
+                    <div class="filter-option active">All</div>
+                    <div class="filter-option">Remote</div>
+                    <div class="filter-option">On-site</div>
+                    <div class="filter-option">Hybrid</div>
+                    <div class="filter-option">Software</div>
+                    <div class="filter-option">Marketing</div>
+                    <div class="filter-option">Design</div>
+                    <div class="filter-option">Finance</div>
+                </div>
+            </div>
+
+            <div class="job-listings">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">Senior Frontend Developer</h2>
+                        <div class="job-company">
+                            <div class="company-logo">TC</div>
+                            <div class="company-info">
+                                <h3>TechCorp Inc.</h3>
+                                <p>San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>5-7 years</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Bachelor's</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-fulltime">Full-Time</span>
+                        <p class="job-salary">$110,000 - $140,000</p>
+                        <p>We're looking for an experienced frontend developer with React expertise to join our growing team.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">Product Manager</h2>
+                        <div class="job-company">
+                            <div class="company-logo">IS</div>
+                            <div class="company-info">
+                                <h3>InnovateSoft</h3>
+                                <p>New York, NY</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>4-6 years</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Master's</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hybrid</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-fulltime">Full-Time</span>
+                        <p class="job-salary">$120,000 - $150,000</p>
+                        <p>Join our product team to drive innovation and deliver exceptional user experiences.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">UX/UI Designer</h2>
+                        <div class="job-company">
+                            <div class="company-logo">DC</div>
+                            <div class="company-info">
+                                <h3>DesignCraft</h3>
+                                <p>Austin, TX</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-briefcase"></i>
+                                <span>3-5 years</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Bachelor's</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>On-site</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-fulltime">Full-Time</span>
+                        <p class="job-salary">$85,000 - $105,000</p>
+                        <p>Create beautiful and functional user interfaces for our enterprise clients.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Part-Time Jobs Section -->
+        <div id="part-time" class="tab-content">
+            <div class="filters">
+                <h3 class="filter-title">Filter By:</h3>
+                <div class="filter-options">
+                    <div class="filter-option active">All</div>
+                    <div class="filter-option">Remote</div>
+                    <div class="filter-option">On-site</div>
+                    <div class="filter-option">Student</div>
+                    <div class="filter-option">Retail</div>
+                    <div class="filter-option">Food</div>
+                    <div class="filter-option">Tutoring</div>
+                    <div class="filter-option">Flexible</div>
+                </div>
+            </div>
+
+            <div class="job-listings">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">Retail Sales Associate</h2>
+                        <div class="job-company">
+                            <div class="company-logo">RS</div>
+                            <div class="company-info">
+                                <h3>RetailStar</h3>
+                                <p>Chicago, IL</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>20-25 hrs/week</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Flexible</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>On-site</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-parttime">Part-Time</span>
+                        <p class="job-salary">$16 - $18/hour</p>
+                        <p>Help customers find products, process transactions, and maintain store appearance.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">Content Writer</h2>
+                        <div class="job-company">
+                            <div class="company-logo">CW</div>
+                            <div class="company-info">
+                                <h3>ContentWorks</h3>
+                                <p>Remote</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>15-20 hrs/week</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Flexible</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-parttime">Part-Time</span>
+                        <p class="job-salary">$25 - $35/hour</p>
+                        <p>Create engaging blog posts and articles for various clients across industries.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h2 class="job-title">Math Tutor</h2>
+                        <div class="job-company">
+                            <div class="company-logo">LT</div>
+                            <div class="company-info">
+                                <h3>LearnTech Tutoring</h3>
+                                <p>Boston, MA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="job-details">
+                        <div class="job-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 hrs/week</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Evenings</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Remote</span>
+                            </div>
+                        </div>
+                        <span class="job-type type-parttime">Part-Time</span>
+                        <p class="job-salary">$30 - $40/hour</p>
+                        <p>Provide online math tutoring to high school and college students.</p>
+                        <div class="job-footer">
+                            <button class="apply-btn">Apply Now</button>
+                            <button class="save-btn"><i class="far fa-bookmark"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <img src="data:image/png;base64,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">
+                <div class="website-name">JobSphere</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="deep1.html">Jobs</a>
+                <a href="team.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy policy.html">Privacy Policy</a>
+                <a href="terms and conditions.html">Terms & Conditions</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 JobSphere. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and content
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Filter option functionality
+        document.querySelectorAll('.filter-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove active class from all options in the same filter group
+                option.parentElement.querySelectorAll('.filter-option').forEach(opt => opt.classList.remove('active'));
+                
+                // Add active class to clicked option
+                option.classList.add('active');
+            });
+        });
+
+        // Save job functionality
+        document.querySelectorAll('.save-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const icon = button.querySelector('i');
+                if (icon.classList.contains('far')) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                    button.style.color = '#0f0';
+                } else {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                    button.style.color = '#aaa';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

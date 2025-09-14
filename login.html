@@ -276,7 +276,7 @@
         }
 
           /* footer section */
-    footer {
+        footer {
             background: #1a1a1a;
             color: white;
             padding: 40px 20px;
@@ -297,55 +297,46 @@
             align-items: center;
             gap: 15px;
             margin-bottom: 15px;
-           
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: #a7f3d0;
         }
         
         .footer-top img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
         }
         
         .footer-top .website-name {
             font-size: 1.8rem;
             font-weight: bold;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+        }
 
-        }
-        
-        .footer-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin: 15px 0;
-        }
-        
-        .footer-links a {
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
             color: white;
-            text-decoration: none;
-            transition: var(--transition);
+            transition: color 0.3s;
         }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            text-decoration: underline;
-        }
-        
-        .social-links {
+         
+        .social-icons {
             display: flex;
             gap: 15px;
             margin: 15px 0;
         }
         
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            color: var(--primary);
+        .social-icons a:hover {
+            color: #a7f3d0;
             transform: translateY(-3px);
         }
         
@@ -356,37 +347,61 @@
             text-align: center;
         }
 
-        .website-name{
-            color:white;
+        .website-name {
+            color: white;
+        }
+
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+        .fa:hover {
+                opacity: 0.7;
+        }
+
+        .fa-facebook {
+            /* background: #3B5998; */
+            color: white;
+        }
+
+        .fa-twitter {
+            /* background: #55ACEE; */
+            color: white;
+        }
+
+        .fa-linkedin {
+            /* background: #007bb5; */
+            color: white;
+        }
+
+        .fa-instagram {
+            /* background: #125688; */
+            color: white;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-          <header>
-
-          <nav>
-        <div class="logo"> <span> Job </span> Sphere
-
-        </div>
-
-        
-        <ul>
-
-      <li><a href="http://127.0.0.1:5500/html/home.html#">Home</a></li>
-
-      <li><a href="http://127.0.0.1:5500/html/team.html" target="_main"> Our Team</a></li>
-
-      <li><a href="http://127.0.0.1:5500/html/deep1.html" target="_main">Browse Jobs</a></li>
-
-      <li><a href="http://127.0.0.1:5500/html/contact.html" target="_main">Contact</a></li>
-
-      <li><a href="http://127.0.0.1:5500/html/join.html" class="btn">Join</a></li>
-
-      </ul> 
-      </nav>
-
-      </header>
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Job</span> Sphere
+            </div>
+            
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="deep1.html">Browse Jobs</a></li>
+                <li><a href="charan rb.html">Resume-Builder</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Main Content -->
     <main>
@@ -500,24 +515,22 @@
             </div>
             
             <div class="footer-links">
-                <a href="http://127.0.0.1:5500/html/home.html#">Home</a>
-                <a href="http://127.0.0.1:5500/html/deep1.html">Jobs</a>
-                <a href="#">For Employers</a>
-                <a href="http://127.0.0.1:5500/html/deep1.html">About Us</a>
-                <a href="http://127.0.0.1:5500/html/contact.html">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
+                <a href="home.html">Home</a>
+                <a href="deep1.html">Jobs</a>
+                <a href="team.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy policy.html">Privacy Policy</a>
+                <a href="terms and conditions.html">Terms & Conditions</a>
             </div>
             
-            <div class="social-links">
-                <a href="https://in.linkedin.com/"><i class="fab fa-linkedin"></i> linked-in</a>
-                <a href="https://x.com/"><i class="fab fa-twitter"></i>twitter</a>
-                <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i>facebook</a>
-                <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i> instagram</a>
+            <div class="social-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
             </div>
-            
             <div class="copyright">
-                &copy; 2023 JobSphere. All rights reserved.
+                &copy; 2025 JobSphere. All rights reserved.
             </div>
         </div>
     </footer>

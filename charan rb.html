@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume Builder</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -17,6 +16,7 @@
             background:black;
             color: #333;
             line-height: 1.6;
+            padding: 10px;
         }
         
         .container {
@@ -257,6 +257,26 @@
         .hidden {
             display: none;
         }
+
+        .close{
+            padding: 20px;
+        }
+
+        .back-btn{
+            color: white;
+            background: #27ae60;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 20%;
+            justify-content: center;
+            box-shadow: 0 0 10px green;
+            text-align: center;
+        }
+
+        .back-btn:hover{
+            color: black;
+            background: blue;
+        }
     </style>
 </head>
 <body>
@@ -332,14 +352,6 @@
                 <button class="btn" id="generateBtn"><i class="fas fa-magic"></i> Generate Resume</button>
             </div>
 
-
-
-
-
-
-
-
-
             
             <div class="preview-section">
                 <h2>Resume Preview</h2>
@@ -388,10 +400,12 @@
             </div>
         </div>
     </div>
+
+    <div class="close"><a class="back-btn" href="home.html">← Back to Home</a></div>
     
     <footer>
         <div class="container">
-            <p>© 2023 CareerConnect Job Portal. All rights reserved.</p>
+            <p>© 2025 JobSphere. All rights reserved.</p>
         </div>
     </footer>
 
