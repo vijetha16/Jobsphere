@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Freelancers | JobPortal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .contaminated{
+            display: flex;
+            justify-content: center;  
+            align-items: center;
+        }
+
+        .search-container {
+            width: 350px;       /* adjust width */
+            margin: 10px;
+            position: relative; /* so the button can be positioned inside */
+            text-align: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 10px 45px 10px 15px; /* leave space on right for button */
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            text-align: left;
+            box-sizing: border-box;
+            background: black;
+            color: white;
+        }
+
+        .search-container input[type="text"]::placeholder {
+            color: white;
+        }
+
+        .search-container button {
+            position: absolute;
+            right: 8px;          /* position inside box */
+            top: 50%;
+            transform: translateY(-50%);
+            background: green; /* Google blue */
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background: #357ae8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3') no-repeat center center/cover;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #00cc66;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+        }
+        
+        .search-box button {
+            background-color: #00cc66;
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Filters Section */
+        .filters {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+        
+        .filter-title {
+            color: #00cc66;
+            margin-bottom: 15px;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .filter-options select, .filter-options input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            background-color: #222;
+            color: #fff;
+        }
+        
+        /* Freelancers Grid */
+        .freelancers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .freelancer-card {
+            background-color: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+        }
+        
+        .freelancer-card:hover {
+            transform: translateY(-5px);
+            border-color: #00cc66;
+        }
+        
+        .card-header {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+        
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00cc66;
+            margin-bottom: 15px;
+        }
+        
+        .card-header h3 {
+            color: #00cc66;
+            margin-bottom: 5px;
+        }
+        
+        .card-header p {
+            color: #ccc;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .skill {
+            background-color: #00cc66;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .rating {
+            color: #00cc66;
+            margin: 10px 0;
+        }
+        
+        .card-footer {
+            padding: 15px 20px;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hourly-rate {
+            color: #00cc66;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 40px 0;
+        }
+        
+        .pagination button {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 10px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .pagination button:hover, .pagination button.active {
+            background-color: #00cc66;
+            color: #000;
+            border-color: #00cc66;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+            }
+            
+            .search-box input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .search-box button {
+                border-radius: 5px;
+                padding: 15px;
+            }
+            
+            .filter-options {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .freelancer-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* footer section */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: #a7f3d0;
+        }
+        
+        .footer-top img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+        
+        .footer-top .website-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s;
+        }
+         
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-icons a:hover {
+            color: #a7f3d0;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .website-name {
+            color: white;
+        }
+
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 50px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+        .fa:hover {
+                opacity: 0.7;
+        }
+
+        .fa-facebook {
+            /* background: #3B5998; */
+            color: white;
+        }
+
+        .fa-twitter {
+            /* background: #55ACEE; */
+            color: white;
+        }
+
+        .fa-linkedin {
+            /* background: #007bb5; */
+            color: white;
+        }
+
+        .fa-instagram {
+            /* background: #125688; */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Find Top Freelancers</h1>
+            <p>Connect with skilled professionals from around the world. Hire experts for your projects and get work done efficiently.</p>
+            <div class="search-container">
+                <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" name="q" placeholder="Search on JobSphere...">
+                <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filters -->
+        <section class="filters">
+            <h2 class="filter-title">Filter Freelancers</h2>
+            <div class="filter-options">
+                <select>
+                    <option>Category</option>
+                    <option>Web Development</option>
+                    <option>Graphic Design</option>
+                    <option>Content Writing</option>
+                    <option>Digital Marketing</option>
+                </select>
+                <select>
+                    <option>Hourly Rate</option>
+                    <option>Under $20/hr</option>
+                    <option>$20-$40/hr</option>
+                    <option>$40-$60/hr</option>
+                    <option>Over $60/hr</option>
+                </select>
+                <select>
+                    <option>Rating</option>
+                    <option>4+ Stars</option>
+                    <option>3+ Stars</option>
+                    <option>2+ Stars</option>
+                </select>
+                <select>
+                    <option>Location</option>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Other</option>
+                </select>
+                <input type="text" placeholder="Specific skills">
+            </div>
+        </section>
+
+        <!-- Freelancers Grid -->
+        <h2 style="color: #00cc66; margin: 30px 0;">Available Freelancers</h2>
+        <div class="freelancers-grid">
+            <!-- Freelancer Card 1 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="profile-img">
+                    <h3>John Doe</h3>
+                    <p>Web Developer</p>
+                </div>
+                <div class="card-body">
+                    <p>Full-stack developer with 5+ years of experience building responsive web applications.</p>
+                    <div class="skills">
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">React</span>
+                        <span class="skill">Node.js</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (28 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$45/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+
+            <!-- Freelancer Card 2 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Smith" class="profile-img">
+                    <h3>Jane Smith</h3>
+                    <p>Graphic Designer</p>
+                </div>
+                <div class="card-body">
+                    <p>Creative designer specializing in branding, logos, and marketing materials.</p>
+                    <div class="skills">
+                        <span class="skill">Photoshop</span>
+                        <span class="skill">Illustrator</span>
+                        <span class="skill">Branding</span>
+                        <span class="skill">UI/UX</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>5.0 (42 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$50/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+
+            <!-- Freelancer Card 3 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Mike Johnson" class="profile-img">
+                    <h3>Mike Johnson</h3>
+                    <p>Content Writer</p>
+                </div>
+                <div class="card-body">
+                    <p>SEO content specialist creating engaging blog posts, articles, and website copy.</p>
+                    <div class="skills">
+                        <span class="skill">SEO Writing</span>
+                        <span class="skill">Blogging</span>
+                        <span class="skill">Copywriting</span>
+                        <span class="skill">Research</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (35 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$35/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+
+            <!-- Freelancer Card 4 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah Williams" class="profile-img">
+                    <h3>Sarah Williams</h3>
+                    <p>Digital Marketer</p>
+                </div>
+                <div class="card-body">
+                    <p>Marketing expert focused on social media, SEO, and conversion rate optimization.</p>
+                    <div class="skills">
+                        <span class="skill">SEO</span>
+                        <span class="skill">Social Media</span>
+                        <span class="skill">Google Ads</span>
+                        <span class="skill">Analytics</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>4.5 (51 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$55/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+
+            <!-- Freelancer Card 5 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Brown" class="profile-img">
+                    <h3>David Brown</h3>
+                    <p>Mobile Developer</p>
+                </div>
+                <div class="card-body">
+                    <p>iOS and Android developer creating performant and user-friendly mobile applications.</p>
+                    <div class="skills">
+                        <span class="skill">Swift</span>
+                        <span class="skill">Kotlin</span>
+                        <span class="skill">React Native</span>
+                        <span class="skill">Firebase</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>4.9 (63 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$60/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+
+            <!-- Freelancer Card 6 -->
+            <div class="freelancer-card">
+                <div class="card-header">
+                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Emily Davis" class="profile-img">
+                    <h3>Emily Davis</h3>
+                    <p>Data Analyst</p>
+                </div>
+                <div class="card-body">
+                    <p>Transforming complex data into actionable insights and visualizations.</p>
+                    <div class="skills">
+                        <span class="skill">Python</span>
+                        <span class="skill">SQL</span>
+                        <span class="skill">Tableau</span>
+                        <span class="skill">Excel</span>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>4.0 (27 reviews)</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="hourly-rate">$40/hr</div>
+                    <button class="btn">Hire Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button><i class="fas fa-chevron-left"></i></button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAhFBMVEX///8AAAD8/PwEBAT19fX4+Pjx8fHi4uLMzMzu7u7a2to7OzvJycmFhYXl5eXp6em/v7+MjIynp6egoKB2dnZISEiysrJaWlpra2u6urrDw8MxMTGZmZkQEBCIiIjR0dFRUVEmJiY5OTlwcHBWVlYaGhpERER7e3uUlJQrKytiYmIZGRmCViVyAAAKKElEQVR4nO2dCZfiKBCAA/E+u+326FbHo2/3//+/BRKVggIyMxpgwvfezr5Wo1CBoqgqKlmWSCQSiUQikUgkEolEIpFIJBJxQCn7z3cjPEOzje8m+OeBjHw3wTetLTk0fS58kZz88t0In9BsR5gMyMB3Q3xCP7gIyLrJS8OYiSDPc/LtuyGeYLeezYSSgTAUGgfNWuuLDIa0kdOBiplQkJPHRsogGxGZne/m+IBZRzKHtu8GeeAERJCTN98NqhuaLYjKS9NUwlQTASF9342qE7YQDhEZzBvkSqB8WdRp2AL5wCxkRAZNciVMkFFQMPXdtFrg/kNMGVxUQjN4JvpEOE+Hse/G1cPMOAo4L76bVwcDqwgI6fpu4P1Rtgk68btYHa4Qms0dIiBk6bASopfRl1MEhJlKdkIXQttu5jxVEAEhC+t3jILfZS/Xs5bhVlFmHxqXxStme5F9a+fpsLpn829Cj/VibNLtq0rDgJBnw3jv8qkUfDSCZkfeiRPmGmP6cvRTQQLrHv7duyV/NwZTsjSB9vh4pt9OESCBaL7avH4Wb8fgaqHnvgwf0Pene6sEln10fX04++Hz8NcFxuOlPwYpcDeaQTVucVP55RqJeLpn029GX+rTJzq1+ydMCOyVFepOez1Kn2rdt/G34lnu2TuqxnWPKucFG+e7uSywWPaVXXiXVxOka1wryB/KhSaA8Iu60AUfi5OFMjMAjvRfbeT+qibjDPmqlup3fL5/828CBdvjXMhD6yCTSVd2J31OkP0WW2YVv2M3hkWhQLcHhz3eR6UD/C7nQkjKNkl8crTWviWWYcDB/CTPiM5/LZTCFrGnpphdPbl/028HujHQtoM0m3J3wr6vj3DU4fZVT+NvRBe1gvYTrbN0rCXisHnQxT0tkSwKBdTkO9b2Aqy/+iD4xu3IcTwKUdBH+sD79alsq6m+HAyOBJdBKzIZSLsGRQxPlk0Pf8O4sYwvsblt6gqZ26Z199N02TayQcCxhFLMcZSFGCqoKrE7GcOErs2+w2fMeKZZy+Jr+/TQhb/n1dQdZhr+YLvJwQELyZcY/GuhszTLgBDdvWL1u588tP8WdI0DgZA3dS60Ub/KhajMIxl8feRd/Vb1AZsHNhFsYjMNLrQPBhGArTS3kXC/0oV1rBLIcLWYI8vcL7sIYlWIBehip6rDtkl5nokshZVmA3ncdpRZzv8AzgI2EfqqryRX/5J9yXQQvmpYyFYglpILxzWVDnKYAJGlGbKqBgZfCkBsXB3nO+U2vmjrAZw/OVnJmyw2sAI/+cNndg73+VO5O8ooYBNhAzuc87sONem2I1/yJkIxoR4Q5u6fddFREHQGs6GntF3L2T0OijSFK9LQp1lPHAEjw0Adi0XTxa5vCHp6KgZ7oQ6Bw4Rqy8aqLe5w+U2cN/m7xD5MvBFiVi8FViEIjPa3VxGAK9rqMY7rdRchHEB8UfKvbJz5X3VDsw4IqU/kt87zW8kcaM3VbWLv3K3regL0h+Syz8kyuOhrD45puNsfi84uJEXG+tqBWctsP30NQNCzC0aKvbDX4BXbXViaUXMCPoHm8WkM5gcTgRZF6sAefbNrPqXxTrEfCYfOUhnVuTIb2C76F+xh56D0h2lSMLgpT2WcyhepwSv2I6cg5oMIDGLpt3A2zFbwGs0+5hyVHi2h3/GIXPKfWGz9zgjWHYpu+nKhuKUPyhfxiYDlocxb6pdLlz/i/oXvzLcMiogI0jhR1UBSgXBFOKJneZgQgJlNZWXQ03+j+Bk1alMzrIkbtGmCHzynlmYt8zmWvRafL2l9mH9o5tVUMEdEOIZsAbq3nGN5N/ySNcN17tF0dmVg47GUpdlxyKYD7kBeOPKcsUSee8PHXteebMnR7g9VstYQsMwzo4f6wvuk9vlQagLrzcmFjaNeaVDvEroP2RayumCL5d6HgVmvXWRAkJs6c2XvYy7XN+ISN/9nXm9Cu5YzZ2ybohIe3NcQzY1sPwgnMa7zdEd1GSinDarJQDnbNqswE+qXwXkuuNrGo6uwXc65IDgA/5lQoxXmQs3GEi0Wxir3R1ns3DpR9Af+mksnlmmg9erEimsjKU70A1xrY3ERtK+qrY1eNg4VlZWi5y02ksQMdMgRj/RiI5VM3Cc2OVAvWmxlGbg4WG3lvd/IfLUDi3IbadZ22xYckNsb7p6J0TXsncFrSvEj494ZfNM8k/0Hoe6dC/kbfCgAoOeNPpT9/PpyDuJV7HeC9aGIMYj60uby4BVBQ/ki3JfW7n9Il6j7TsyX9hGAL62gs9Tnw3QEX3P5VAkZtrOyrub1S6LwqZZs1OY9aerS7lvPmQi4D2kBXnP71kMYAgKqxVjE/FdMXHuMRbgSaXm25XKjHTGWwKoudsCqz50nNHuH6l+Nte2lt5eXt2AEzhJrw3JdvYLEXEGhTEfMdXXtTj+XL/owx1wDGwQcLPYuV4YrhYDG3r8y6Y0euCii2LtAz8FQk41gDoaomyZmPbijUJlqORgk3BwMjpqLA1NKTLk46q4XFhnFcnHaAS0IOlpOlrqr0nOyXpWxoSZ2ruTdQPg5WRnf5S7gn+rOQM3NU08pqSLIo8vNoxnYKFfJ0YR7vheiySC6HE2IIVfX3AvUWRLTEV+NEdKh3HaeyeCZijhnu1ruvsRGO+hesK612TcE2eRchKCd4RCMjZ7qp9iUwJnfOsuTiarTRkdjrHWHf+9MV8uayxB+gTAEiirEswzg2T7uOOg6KmhFWJOect9X5TOeNNu53O1IGD98qp/1dZ/p4kR41hc/883vthIRocJn7CbCM9+2s/8AZiy7znQVRHb2n5prQCg7f64ND/KamIP/AUJyIrsx1gLRsqyVQyti3Xzd4OXUIqsFgteEeddrwgjbEHx0y5bNf6EmTMXaQFnWnxNlIvwUHY2/NhBaI6qjO8D0s8D786TvvyHfEbAbUQOpFbYz1ApTBFU4zMW/PT3AGJEjQa8Zp5fIoiJqT8An1eVvRlS1giiUIKHaMHjEcuaQGT9SLWglBzCPRyMoe+Y3bBZjlWW1M1o01hqSFNZU/41aolu8liiQViTP/PyLmrKnjvZZGmVN2e+yQ4Qcb1FbmI+MuGoL07+tMf3eR+NoFyls79yBm1BO9T+vNW6406+l/RzDA1tEssh9as6LNSKCmvM82j422bSVnj2Qm+3BOJ49kJ3WM2RjIKj4DArieAZF8FVy0rNI3DThmTTp2UQVaMAzqtykZ5Vl6Zl1gsY/u5Cn2lufYdkAdcBp+rNMBfgzbfNwM3DvwRj1oTTp2cbmZ1w3isY/61wuiHYlhgex3RjFaR5b4diboGwcDrHviP8ImLcWYd7ZLbgukM1aFmVaVwfrMMADWjVA5XPcg9AKg9bHFymcrC7v2b8M/U8I4dDIiXCmh9QPahx8NjTCb2KBWUpNcKLaeWmW0wCDZpGlId8BGkgpj0QikUgkEolEIpFIJBKJRCKRqML/REBn/0QWvfcAAAAASUVORK5CYII=">
+                <div class="website-name">JobSphere</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="deep1.html">Jobs</a>
+                <a href="team.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy policy.html">Privacy Policy</a>
+                <a href="terms and conditions.html">Terms & Conditions</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 JobSphere. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const hireButtons = document.querySelectorAll('.btn');
+            
+            hireButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    if (this.textContent === 'Hire Now') {
+                        alert('This would open a hiring dialog in a real application.');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
