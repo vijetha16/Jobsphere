@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hired - Student Placement Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        /* Navigation Bar */
+        .navbar {
+            background-color: #000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00cc66;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00cc66;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #00cc66;
+        }
+        
+        .nav-links a.active {
+            color: #00cc66;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #00cc66;
+        }
+        
+        /* Hired Section */
+        .hired-section {
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h1 {
+            font-size: 2.5rem;
+            color: #00cc66;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+        
+        /* Month Selector */
+        .month-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .month-btn {
+            background-color: #111;
+            color: #fff;
+            border: 1px solid #333;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .month-btn:hover {
+            background-color: #00cc66;
+            color: #000;
+        }
+        
+        .month-btn.active {
+            background-color: #00cc66;
+            color: #000;
+            border-color: #00cc66;
+        }
+        
+        /* Hired Grid */
+        .hired-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .hired-card {
+            background-color: #111;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .hired-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 204, 102, 0.2);
+        }
+        
+        .card-header {
+            background-color: #00cc66;
+            color: #000;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-header p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .student-list {
+            list-style: none;
+        }
+        
+        .student-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .student-item:last-child {
+            border-bottom: none;
+        }
+        
+        .student-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #00cc66;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .student-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .student-info p {
+            color: #00cc66;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .stat-card {
+            background-color: #111;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            border-top: 4px solid #00cc66;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00cc66;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem;
+            }
+            
+            .hired-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .month-selector {
+                gap: 0.3rem;
+            }
+            
+            .month-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <i class="fas fa-graduation-cap"></i> Jobsphere
+        </a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Hired</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hired Section -->
+    <section class="hired-section">
+        <div class="section-header">
+            <h1>Our Hired Students</h1>
+            <p>Celebrating the success of students who secured positions through our platform. These talented individuals have been placed in top companies across various industries.</p>
+        </div>
+
+        <!-- Month Selector -->
+        <div class="month-selector">
+            <button class="month-btn active" data-month="january">Jan</button>
+            <button class="month-btn" data-month="february">Feb</button>
+            <button class="month-btn" data-month="march">Mar</button>
+            <button class="month-btn" data-month="april">Apr</button>
+            <button class="month-btn" data-month="may">May</button>
+            <button class="month-btn" data-month="june">Jun</button>
+            <button class="month-btn" data-month="july">Jul</button>
+            <button class="month-btn" data-month="august">Aug</button>
+            <button class="month-btn" data-month="september">Sep</button>
+            <button class="month-btn" data-month="october">Oct</button>
+            <button class="month-btn" data-month="november">Nov</button>
+            <button class="month-btn" data-month="december">Dec</button>
+        </div>
+
+        <!-- Hired Grid -->
+        <div class="hired-grid" id="hired-container">
+            <!-- Content will be dynamically loaded here -->
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">342</div>
+                <div class="stat-text">Students Hired This Year</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">78</div>
+                <div class="stat-text">Partner Companies</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">94%</div>
+                <div class="stat-text">Placement Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Data for all 12 months
+        const hiringData = {
+            january: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "John Smith", company: "Software Engineer at Google", initials: "JS" },
+                        { name: "Sarah Davis", company: "Frontend Developer at Microsoft", initials: "SD" },
+                        { name: "Robert Johnson", company: "Data Scientist at Amazon", initials: "RJ" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Emma Wilson", company: "Financial Analyst at JPMorgan", initials: "EW" },
+                        { name: "Michael Brown", company: "Marketing Manager at Nike", initials: "MB" },
+                        { name: "Amanda Taylor", company: "Product Manager at Airbnb", initials: "AT" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Jessica Martinez", company: "UX Designer at Adobe", initials: "JM" },
+                        { name: "David Rodriguez", company: "Video Producer at Netflix", initials: "DR" },
+                        { name: "Sofia Clark", company: "Graphic Designer at Disney", initials: "SC" }
+                    ]
+                }
+            ],
+            february: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Alex Chen", company: "Backend Developer at Facebook", initials: "AC" },
+                        { name: "Maya Patel", company: "iOS Developer at Apple", initials: "MP" },
+                        { name: "Daniel Kim", company: "DevOps Engineer at Netflix", initials: "DK" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Olivia Martin", company: "Investment Banker at Goldman Sachs", initials: "OM" },
+                        { name: "James Wilson", company: "Marketing Director at Coca-Cola", initials: "JW" },
+                        { name: "Sophia Anderson", company: "Business Analyst at McKinsey", initials: "SA" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Lucas Garcia", company: "UI Designer at Spotify", initials: "LG" },
+                        { name: "Isabella Lee", company: "Art Director at Warner Bros", initials: "IL" },
+                        { name: "Ethan Wright", company: "Motion Designer at Pixar", initials: "EW" }
+                    ]
+                }
+            ],
+            march: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Noah Thompson", company: "Full Stack Developer at Uber", initials: "NT" },
+                        { name: "Ava Robinson", company: "Android Developer at Google", initials: "AR" },
+                        { name: "William Harris", company: "Machine Learning Engineer at Tesla", initials: "WH" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Mia Walker", company: "Financial Planner at Morgan Stanley", initials: "MW" },
+                        { name: "Benjamin White", company: "Brand Manager at Procter & Gamble", initials: "BW" },
+                        { name: "Charlotte King", company: "Management Consultant at BCG", initials: "CK" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Liam Scott", company: "Product Designer at Airbnb", initials: "LS" },
+                        { name: "Harper Young", company: "Creative Director at Wieden+Kennedy", initials: "HY" },
+                        { name: "Alexander Hall", company: "Visual Effects Artist at Industrial Light & Magic", initials: "AH" }
+                    ]
+                }
+            ],
+            april: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Ella Green", company: "Software Engineer at Twitter", initials: "EG" },
+                        { name: "Jackson Adams", company: "Cloud Architect at AWS", initials: "JA" },
+                        { name: "Lily Nelson", company: "Security Analyst at CrowdStrike", initials: "LN" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Jacob Carter", company: "Hedge Fund Analyst at Bridgewater", initials: "JC" },
+                        { name: "Abigail Mitchell", company: "Digital Marketing Manager at Amazon", initials: "AM" },
+                        { name: "Michael Turner", company: "Strategy Consultant at Bain & Company", initials: "MT" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Emily Phillips", company: "UX Researcher at IBM", initials: "EP" },
+                        { name: "Daniel Campbell", company: "Photographer at National Geographic", initials: "DC" },
+                        { name: "Samantha Parker", company: "Illustrator at The New Yorker", initials: "SP" }
+                    ]
+                }
+            ],
+            may: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Matthew Evans", company: "Game Developer at Epic Games", initials: "ME" },
+                        { name: "Avery Edwards", company: "AR/VR Developer at Oculus", initials: "AE" },
+                        { name: "David Stewart", company: "Blockchain Developer at Coinbase", initials: "DS" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Evelyn Flores", company: "Private Equity Associate at KKR", initials: "EF" },
+                        { name: "Joseph Sanchez", company: "Product Marketing Manager at Slack", initials: "JS" },
+                        { name: "Scarlett Morris", company: "Operations Manager at Stripe", initials: "SM" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Henry Cook", company: "Graphic Designer at Apple", initials: "HC" },
+                        { name: "Victoria Price", company: "Art Director at Vogue", initials: "VP" },
+                        { name: "Dylan Bell", company: "Video Editor at YouTube", initials: "DB" }
+                    ]
+                }
+            ],
+            june: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Andrew Cooper", company: "Quantum Computing Researcher at IBM", initials: "AC" },
+                        { name: "Zoe Ward", company: "AI Ethics Specialist at OpenAI", initials: "ZW" },
+                        { name: "Nathan Rivera", company: "IoT Engineer at Siemens", initials: "NR" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Hannah Gray", company: "Venture Capital Associate at Sequoia", initials: "HG" },
+                        { name: "Christopher James", company: "Growth Hacker at TikTok", initials: "CJ" },
+                        { name: "Addison Reed", company: "Business Development Manager at Salesforce", initials: "AR" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Joshua Brooks", company: "3D Animator at DreamWorks", initials: "JB" },
+                        { name: "Lillian Watson", company: "Creative Technologist at Google Creative Lab", initials: "LW" },
+                        { name: "Ryan Bryant", company: "Sound Designer at Dolby", initials: "RB" }
+                    ]
+                }
+            ],
+            july: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Grace Bennett", company: "Cloud Engineer at Oracle", initials: "GB" },
+                        { name: "Samuel Parker", company: "iOS Developer at Instagram", initials: "SP" },
+                        { name: "Chloe Howard", company: "Data Engineer at LinkedIn", initials: "CH" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Anthony Gonzalez", company: "Financial Controller at Deloitte", initials: "AG" },
+                        { name: "Zoe Richardson", company: "Brand Strategist at Nike", initials: "ZR" },
+                        { name: "Thomas Morgan", company: "Investment Analyst at BlackRock", initials: "TM" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Riley Cox", company: "UX/UI Designer at Facebook", initials: "RC" },
+                        { name: "Nora Ward", company: "Art Director at Adobe", initials: "NW" },
+                        { name: "Christian Murphy", company: "Video Producer at YouTube", initials: "CM" }
+                    ]
+                }
+            ],
+            august: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Leah Bailey", company: "Backend Developer at Netflix", initials: "LB" },
+                        { name: "Jonathan Reed", company: "Machine Learning Specialist at Tesla", initials: "JR" },
+                        { name: "Hailey Peterson", company: "Security Engineer at PayPal", initials: "HP" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "David Coleman", company: "Marketing Analyst at Spotify", initials: "DC" },
+                        { name: "Julia Barnes", company: "Financial Advisor at Morgan Stanley", initials: "JB" },
+                        { name: "Kevin Rivera", company: "Business Development at Uber", initials: "KR" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Tyler Simmons", company: "Motion Graphics Designer at Apple", initials: "TS" },
+                        { name: "Maria Foster", company: "Creative Director at Ogilvy", initials: "MF" },
+                        { name: "Justin Henderson", company: "UI Designer at Microsoft", initials: "JH" }
+                    ]
+                }
+            ],
+            september: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Katherine Powell", company: "Full Stack Developer at Airbnb", initials: "KP" },
+                        { name: "Brandon Fisher", company: "Android Developer at Samsung", initials: "BF" },
+                        { name: "Lauren Wallace", company: "DevOps Engineer at IBM", initials: "LW" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Aaron Russell", company: "Investment Banker at Citigroup", initials: "AR" },
+                        { name: "Rachel Bryant", company: "Product Manager at Amazon", initials: "RB" },
+                        { name: "Jason Griffin", company: "Management Consultant at Accenture", initials: "JG" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Brianna Hamilton", company: "Graphic Designer at Netflix", initials: "BH" },
+                        { name: "Cameron Sanders", company: "Art Director at Disney", initials: "CS" },
+                        { name: "Vanessa Perry", company: "UX Researcher at Google", initials: "VP" }
+                    ]
+                }
+            ],
+            october: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Austin Flores", company: "Software Engineer at Twitter", initials: "AF" },
+                        { name: "Mackenzie Washington", company: "Data Scientist at Microsoft", initials: "MW" },
+                        { name: "Cody Butler", company: "Cloud Solutions Architect at Google", initials: "CB" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Allison Simmons", company: "Financial Analyst at JPMorgan", initials: "AS" },
+                        { name: "Evan Patterson", company: "Marketing Director at Coca-Cola", initials: "EP" },
+                        { name: "Gabrielle Hughes", company: "Strategy Consultant at BCG", initials: "GH" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Luke Torres", company: "Product Designer at Facebook", initials: "LT" },
+                        { name: "Ariana Jenkins", company: "Creative Director at Wieden+Kennedy", initials: "AJ" },
+                        { name: "Derek Kelly", company: "Visual Effects Artist at Industrial Light & Magic", initials: "DK" }
+                    ]
+                }
+            ],
+            november: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Sydney Richardson", company: "Frontend Developer at Adobe", initials: "SR" },
+                        { name: "Blake Long", company: "Backend Engineer at Spotify", initials: "BL" },
+                        { name: "Jasmine Ross", company: "AI Researcher at OpenAI", initials: "JR" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Tyler Coleman", company: "Private Equity Associate at KKR", initials: "TC" },
+                        { name: "Morgan James", company: "Digital Marketing Manager at Amazon", initials: "MJ" },
+                        { name: "Jordan Howard", company: "Business Analyst at McKinsey", initials: "JH" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Caleb Ward", company: "UX Designer at Apple", initials: "CW" },
+                        { name: "Taylor Diaz", company: "Photographer at National Geographic", initials: "TD" },
+                        { name: "Alexis Price", company: "Illustrator at The New Yorker", initials: "AP" }
+                    ]
+                }
+            ],
+            december: [
+                {
+                    category: "Tech Placements",
+                    subcategory: "Software Development Roles",
+                    students: [
+                        { name: "Jordan Foster", company: "Game Developer at Epic Games", initials: "JF" },
+                        { name: "Morgan Reed", company: "AR/VR Developer at Oculus", initials: "MR" },
+                        { name: "Taylor Simmons", company: "Blockchain Developer at Coinbase", initials: "TS" }
+                    ]
+                },
+                {
+                    category: "Business Roles",
+                    subcategory: "Finance & Marketing",
+                    students: [
+                        { name: "Casey Bryant", company: "Hedge Fund Analyst at Bridgewater", initials: "CB" },
+                        { name: "Jamie Patterson", company: "Product Marketing Manager at Slack", initials: "JP" },
+                        { name: "Riley Coleman", company: "Operations Manager at Stripe", initials: "RC" }
+                    ]
+                },
+                {
+                    category: "Creative Fields",
+                    subcategory: "Design & Media",
+                    students: [
+                        { name: "Morgan Turner", company: "Graphic Designer at Apple", initials: "MT" },
+                        { name: "Jordan Phillips", company: "Art Director at Vogue", initials: "JP" },
+                        { name: "Taylor Morgan", company: "Video Editor at YouTube", initials: "TM" }
+                    ]
+                }
+            ]
+        };
+
+        // Function to render hired students for a specific month
+        function renderHiredData(month) {
+            const container = document.getElementById('hired-container');
+            container.innerHTML = '';
+            
+            const data = hiringData[month];
+            
+            data.forEach(category => {
+                const card = document.createElement('div');
+                card.className = 'hired-card';
+                
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3>${category.category}</h3>
+                        <p>${category.subcategory}</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="student-list">
+                            ${category.students.map(student => `
+                                <li class="student-item">
+                                    <div class="student-img">${student.initials}</div>
+                                    <div class="student-info">
+                                        <h4>${student.name}</h4>
+                                        <p>${student.company}</p>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Initialize with January data
+        document.addEventListener('DOMContentLoaded', function() {
+            renderHiredData('january');
+            
+            // Add event listeners to month buttons
+            document.querySelectorAll('.month-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.month-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    const month = this.getAttribute('data-month');
+                    renderHiredData(month);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
