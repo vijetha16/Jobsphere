@@ -18,7 +18,58 @@
             color: #fff;
             line-height: 1.6;
         }
-        
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: black;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        nav .logo {
+            width: 120px;
+            padding-left: 10%;
+        }
+
+        .logo {
+            font-size: 50px;
+            display: flex;
+            font-weight: bold;
+        }
+
+        .logo span {
+            background: white;
+            color: #134e4a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a7f3d0;
+        }
+
         /* Navigation Bar */
         .navbar {
             background-color: #000;
@@ -276,18 +327,48 @@
                 font-size: 0.8rem;
             }
         }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .close{
+            padding: 10px;
+            text-align: center;
+        }
+
+        .back-btn{
+            color: white;
+            padding: 10px;
+        }
+
+        .back-btn:hover{
+            color: green;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="#" class="logo">
-            <i class="fas fa-graduation-cap"></i> Jobsphere
-        </a>
-        <ul class="nav-links">
-            <li><a href="#" class="active">Hired</a></li>
-        </ul>
-    </nav>
+
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Job</span> Sphere
+            </div>
+            
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="deep1.html">Browse Jobs</a></li>
+                <li><a href="charan rb.html">Resume-Builder</a></li>
+                <li><a href="hired data.html">Hired</a> </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="close"><a class="back-btn" href="index.html">← Go Back</a></div>
 
     <!-- Hired Section -->
     <section class="hired-section">
