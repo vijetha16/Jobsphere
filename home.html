@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - JobSphere</title>
+    <link rel="icon" href="G:/HTML/Charan/logo for portal.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        :root {
+            --primary: #10b981;
+            --secondary: #4f46e5;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: black;
+            z-index: 1000;
+        }
+
+        body {
+            padding-top: 100px;
+            background-color: black;
+            color: white;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        nav .logo {
+            width: 120px;
+            padding-left: 10%;
+        }
+
+        .logo {
+            font-size: 50px;
+            display: flex;
+            font-weight: bold;
+        }
+
+        .logo span {
+            background: white;
+            color: #134e4a;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a7f3d0;
+        }
+
+        .btn {
+            background: white;
+            color: #134e4a;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a7f3d0;
+            color: #134e4a;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .main-text {
+            max-width: 500px;
+        }
+
+        .main-text h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .main-text p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            color: #d1d5db;
+        }
+
+        .search {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            max-width: 400px;
+        }
+
+        .search input {
+            border: none;
+            padding: 12px 15px;
+            flex: 1;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .search button {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: 0.3s;
+        }
+
+        .search button:hover {
+            background: #059669;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-text {
+                max-width: 100%;
+                margin-bottom: 40px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+            
+            .logo {
+                font-size: 40px;
+            }
+        }
+
+        .image-section {
+            position: relative;
+            width: 480px;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        /* main tall image */
+        .main-img {
+            width: 290px;
+            height: 380px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+            position: absolute;
+            right: 60px;
+            top: 40px;
+        }
+        .main-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* side image */
+        .side-img {
+            width: 190px;
+            height: 190px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+            position: absolute;
+            left: 0;
+            top: 140px;
+        }
+        .side-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-size: 2.2rem;
+            color: #e2e8f0;
+            position: relative;
+        }
+
+        /* floating badge top one*/
+        .badge-top {
+            position: absolute;
+            color: #134e4a;
+            right: 0;
+            top: 10px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* floating badge bottom */
+        .badge-bottom {
+            position: absolute;
+            color: hsl(176, 61%, 19%);
+            right: 320px;
+            bottom: -76px;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
+
+        /* bottom strip */
+        .bottom-strip {
+            position: absolute;
+            right: -20px;
+            bottom: -160px;
+            background: #fff;
+            color: #1f4a3f;
+            padding: 10px 16px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .avatars {
+            display: flex;
+        }
+        .avatars img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            margin-left: -8px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: black;
+            padding: 80px 0;
+            margin: 80px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #334155;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: #4f46e5;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .author-details h4 {
+            color: #00c897;
+            margin-bottom: 5px;
+        }
+        
+        .author-details p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            padding-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 65px;
+            font-weight: 700;
+            color: #818cf8;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Call to Action */
+        .cta {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            border-radius: 15px;
+            margin: 80px 0;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .btn-white {
+            background: white;
+            color: #4f46e5;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-white:hover {
+            background: #f1f5f9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* footer section */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a:hover {
+            color: #a7f3d0;
+        }
+        
+        .footer-top img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .footer-top .website-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            color: white;
+            transition: color 0.3s;
+        }
+         
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-icons a:hover {
+            color: #a7f3d0;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .website-name {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .image-section {
+                width: 100%;
+                height: auto;
+                margin-bottom: 100px;
+            }
+            
+            .main-img, .side-img {
+                position: relative;
+                margin: 0 auto 20px;
+                right: auto;
+                left: auto;
+                top: auto;
+            }
+            
+            .badge-top, .badge-bottom, .bottom-strip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <span>Job</span> Sphere
+            </div>
+            
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="team.html">Our Team</a></li>
+                <li><a href="deep1.html">Browse Jobs</a></li>
+                <li><a href="charan rb.html">Resume-Builder</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="main-text">
+            <h1>Find the perfect<br>freelance services for<br>your business</h1>
+            <p>
+                Work with talented people at the most affordable price to get
+                the most out of your time and cost
+            </p>
+            <br>
+            <div class="search">
+                <input type="text" placeholder="What are you looking for?">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <div class="image-section">
+            <!-- side small image -->
+            <div class="side-img">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQI06qwO7KIJf7jsYD3Y8hxuUYfe0MS30NCZQ&s" alt="left img">
+            </div>
+            
+            <!-- main tall image -->
+            <div class="main-img">
+                <img src="https://media.istockphoto.com/id/1857502667/photo/business-people-in-convention-center-during-coffee-break.jpg?s=612x612&w=0&k=20&c=NKUWDsS4Xga_Gyq9ITCcSRMln6bvcnGDFmL3ymEpVLc=" alt="main img">
+            </div>
+
+            <!-- floating badges -->
+            <div class="badge-top">Find new jobs</div>
+            <div class="badge-bottom">Safe & Secure</div>
+
+            <!-- bottom strip -->
+            <div class="bottom-strip">
+                28L+ Happy Clients
+                <div class="avatars">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="user1">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="user2">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="user3">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights">
+        <div class="container">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">3,000+</div>
+                    <div class="stat-label">Jobs Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1,800+</div>
+                    <div class="stat-label">Companies</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">2L+</div>
+                    <div class="stat-label">Job Seekers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">CareerHub helped me find my dream job in just two weeks! The process was smooth and I received multiple offers.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div class="author-details">
+                            <h4>John Doe</h4>
+                            <p>Software Engineer at TechVision</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">The personalized job recommendations were spot on. I found a perfect role that matched my skills and career goals.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-details">
+                            <h4>Sarah Miller</h4>
+                            <p>Product Manager at InnovateCo</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As a recruiter, CareerHub has been invaluable for finding qualified candidates quickly and efficiently.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RJ</div>
+                        <div class="author-details">
+                            <h4>Robert Johnson</h4>
+                            <p>Talent Acquisition at DataInsight</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="container">
+        <div class="cta">
+            <h2>Ready to Advance Your Career?</h2>
+            <p>Join thousands of professionals who have found their dream jobs through CareerHub. Create your profile today!</p>
+            <div class="cta-buttons">
+                <a href="join.html" class="btn-white">Upload your Resume</a>
+                <a href="login.html" class="btn-outline-white">Create Account</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAhFBMVEX///8AAAD8/PwEBAT19fX4+Pjx8fHi4uLMzMzu7u7a2to7OzvJycmFhYXl5eXp6em/v7+MjIynp6egoKB2dnZISEiysrJaWlpra2u6urrDw8MxMTGZmZkQEBCIiIjR0dFRUVEmJiY5OTlwcHBWVlYaGhpERER7e3uUlJQrKytiYmIZGRmCViVyAAAKKElEQVR4nO2dCZfiKBCAA/E9u+326FbHo2/3//+/BRKVggIyMxpgwvfezr5Wo1CBoqgqKlmWSCQSiUQikUgkEolEIpFIJBJxQCn7z3cjPEOzje8m+OeBjHw3wTetLTk0fS58kZz88t0In9BsR5gMyMB3Q3xCP7gIyLrJS8OYiSDPc/LtuyGeYLeezYSSgTAUGgfNWuuLDIa0kdOBiplQkJPHRsogGxGZne/m+IBZRzKHtu8GeeAERJCTN98NqhuaLYjKS9NUwlQTASF9342qE7YQDhEZzBvkSqB8WdRp2AL5wCxkRAZNciVMkFFQMPXdtFrg/kNMGVxUQjN4JvpEOE+Hse/G1cPMOAo4L76bVwcDqwgI6fpu4P1Rtgk68btYHa4Qms0dIiBk6bASopfRl1MEhJlKdkIXQttu5jxVEAEhC+t3jILfZS/Xs5bhVlFmHxqXxStme5F9a+fpsLpn829Cj/VibNLtq0rDgJBnw3jv8qkUfDSCZkfeiRPmGmP6cvRTQQLrHv7duyV/NwZTsjSB9vh4pt9OESCBaL7avH4Wb8fgaqHnvgwf0Pene6sEln10fX04++Hz8NcFxuOlPwYpcDeaQTVucVP55RqJeLpn029GX+rTJzq1+ydMCOyVFepOez1Kn2rdt/G34lnu2TuqxnWPKucFG+e7uSywWPaVXXiXVxOka1wryB/KhSaA8Iu60AUfi5OFMjMAjvRfbeT+qibjDPmqlup3fL5/828CBdvjXMhD6yCTSVd2J31OkP0WW2YVv2M3hkWhQLcHhz3eR6UD/C7nQkjKNkl8crTWviWWYcDB/CTPiM5/LZTCFrGnpphdPbl/028HujHQtoM0m3J3wr6vj3DU4fZVT+NvRBe1gvYTrbN0rCXisHnQxT0tkSwKBdTkO9b2Aqy/+iD4xu3IcTwKUdBH+sD79alsq6m+HAyOBJdBKzIZSLsGRQxPlk0Pf8O4sYwvsblt6gqZ26Z199N02TayQcCxhFLMcZSFGCqoKrE7GcOErs2+w2fMeKZZy+Jr+/TQhb/n1dQdZhr+YLvJwQELyZcY/GuhszTLgBDdvWL1u588tP8WdI0DgZA3dS60Ub/KhajMIxl8feRd/Vb1AZsHNhFsYjMNLrQPBhGArTS3kXC/0oV1rBLIcLWYI8vcL7sIYlWIBehip6rDtkl5nokshZVmA3ncdpRZzv8AzgI2EfqqryRX/5J9yXQQvmpYyFYglpILxzWVDnKYAJGlGbKqBgZfCkBsXB3nO+U2vmjrAZw/OVnJmyw2sAI/+cNndg73+VO5O8ooYBNhAzuc87sONem2I1/yJkIxoR4Q5u6fddFREHQGs6GntF3L2T0OijSFK9LQp1lPHAEjw0Adi0XTxa5vCHp6KgZ7oQ6Bw4Rqy8aqLe5w+U2cN/m7xD5MvBFiVi8FViEIjPa3VxGAK9rqMY7rdRchHEB8UfKvbJz5X3VDsw4IqU/kt87zW8kcaM3VbWLv3K3regL0h+Syz8kyuOhrD45puNsfi84uJEXG+tqBWctsP30NQNCzC0aKvbDX4BXbXViaUXMCPoHm8WkM5gcTgRZF6sAefbNrPqXxTrEfCYfOUhnVuTIb2C76F+xh56D0h2lSMLgpT2WcyhepwSv2I6cg5oMIDGLpt3A2zFbwGs0+5hyVHi2h3/GIXPKfWGz9zgjWHYpu+nKhuKUPyhfxiYDlocxb6pdLlz/i/oXvzLcMiogI0jhR1UBSgXBFOKJneZgQgJlNZWXQ03+j+Bk1alMzrIkbtGmCHzynlmYt8zmWvRafL2l9mH9o5tVUMEdEOIZsAbq3nGN5N/ySNcN17tF0dmVg47GUpdlxyKYD7kBeOPKcsUSee8PHXteebMnR7g9VstYQsMwzo4f6wvuk9vlQagLrzcmFjaNeaVDvEroP2RayumCL5d6HgVmvXWRAkJs6c2XvYy7XN+ISN/9nXm9Cu5YzZ2ybohIe3NcQzY1sPwgnMa7zdEd1GSinDarJQDnbNqswE+qXwXkuuNrGo6uwXc65IDgA/5lQoxXmQs3GEi0Wxir3R1ns3DpR9Af+mksnlmmg9erEimsjKU70A1xrY3ERtK+qrY1eNg4VlZWi5y02ksQMdMgRj/RiI5VM3Cc2OVAvWmxlGbg4WG3lvd7IfLUDi3IbadZ22xYckNsb7p6J0TXsncFrSvEj494ZfNM8k/0Hoe6dC/kbfCgAoOeNPpT9/PpyDuJV7HeC9aGIMYj60uby4BVBQ/ki3JfW7n9Il6j7TsyX9hGAL62gs9Tnw3QEX3P5VAkZtrOyrub1S6LwqZZs1OY9aerS7lvPmQi4D2kBXnP71kMYAgKqxVjE/FdMXHuMRbgSaXm25XKjHTGWwKoudsCqz50nNHuH6l+Nte2lt5eXt2AEzhJrw3JdvYLEXEGhTEfMdXXtTj+XL/owx1wDGwQcLPYuV4YrhYDG3r8y6Y0euCii2LtAz8FQk41gDoaomyZmPbijUJlqORgk3BwMjpqLA1NKTLk46q4XFhnFcnHaAS0IOlpOlrqr0nOyXpWxoSZ2ruTdQPg5WRnf5S7gn+rOQM3NU08pqSLIo8vNoxnYKFfJ0YR7vheiySC6HE2IIVfX3AvUWRLTEV+NEdKh3HaSeeCZijhnu1ruvsRGO+hesK612TcE2eRchKCd4RCMjZ7qp9iUwJnfOsuTiarTRkdjrHWHf+9MV8uayxB+gTAEiirEswzg2T7uOOg6KmhFWJOect9X5TOeNNu53O1IGD98qp/1dZ/p4kR41hc/883vthIRocJn7CbCM9+2s/8AZiy7znQVRHb2n5prQCg7f64ND/KamIP/AUJyIrsx1gLRsqyVQyti3Xzd4OXUIqsFgteEeddrwgjbEHx0y5bNf6EmTMXaQFnWnxNlIvwUHY2/NhBaI6qjO8D0s8D786TvvyHfEbAbUQOpFbYz1ApTBFU4zMW/PT3AGJEjQa8Zp5fIoiJqT8An1eVvRlS1giiUIKHaMHjEcuaQGT9SLWglBzCPRyMoe+Y3bBZjlWW1M1o01hqSFNZU/41aolu8liiQViTP/PyLmrKnjvZZGmVN2e+yQ4Qcb1FbmI+MuGoL07+tMf3eR+NoFyls79yBm1BO9T+vNW6406+l/RzDA1tEssh9as6LNSKCmvM82j422bSVnj2Qm+3BOJ49kJ3WM2RjIKj4DArieAZF8FVy0rNI3DThmTTp2UQVaMAzqtykZ5Vl6Zl1gsY/u5Cn2lufYdkAdcBp+rNMBfgzbfNwM3DvwRj1oTTp2cbmZ1w3isY/61wuiHYlhgex3RjFaR5b4diboGwcDrHviP8ImLcWYd7ZLbgukM1aFmVaVwfrMMADWjVA5XPcg9AKg9bHFymcrC7v2b8M/U8I4dDIiXCmh9QPahx8NjTCb2KBWUpNcKLaeWmW0wCDZpGlId8BGkgpj0QikUgkEolEIpFIJBKJRCKRqML/REBn/0QWvfcAAAAASUVORK5CYII=" alt="JobSphere Logo">
+                <div class="website-name">JobSphere</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="home.html">Home</a>
+                <a href="deep1.html">Jobs</a>
+                <a href="team.html">About Us</a>
+                <a href="contact.html">Contact</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-and-conditions.html">Terms & Conditions</a>
+            </div>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 JobSphere. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

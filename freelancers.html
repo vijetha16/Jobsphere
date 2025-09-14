@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Sphere - Search Freelancers</title>
+    <link rel="icon" href="data:image/png;base64,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">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color:black;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        header {
+            background-color:black;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        
+        .logo i {
+            margin-right: 12px;
+            font-size: 36px;
+        }
+        
+        .weather {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        
+        .weather i {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+        
+        .search-container {
+            display: flex;
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .search-container input {
+            flex: 1;
+            padding: 16px 22px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding-right: 60px;
+        }
+        
+        .search-container button {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-container button:hover {
+            background: #ff5252;
+        }
+        
+        .main-content {
+            padding: 30px;
+        
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 20px 0 40px;
+            color: #fff;
+            font-size: 32px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+        
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .card {
+            background:black;
+            border-radius: 18px;
+            width: 300px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card i {
+            font-size: 60px;
+            margin-bottom: 25px;
+            color: #6a11cb;
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card h3 {
+            margin-bottom: 18px;
+            color: #00c897;
+            font-size: 24px;
+        }
+        
+        .card p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .freelancers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .freelancer-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+        
+        .freelancer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .freelancer-header {
+            padding: 25px;
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            position: relative;
+        }
+        
+        .freelancer-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 4px solid black;
+            margin: 0 auto 15px;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .freelancer-body {
+            padding: 25px;
+        }
+        
+        .freelancer-body h3 {
+            margin-bottom: 12px;
+            color: #fff;
+            font-size: 22px;
+        }
+        
+        .freelancer-body p {
+            color: #fff;
+            margin-bottom: 18px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .skill {
+            background: #00c897;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin: 15px 0;
+            font-size: 18px;
+        }
+        
+        .rating span {
+            color: #fff;
+            margin-left: 8px;
+        }
+        
+        .hire-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background-color:#00c897;
+            color: black;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .hire-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+        
+        .jobs-section {
+            background: black;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 0 0 20px 20px;
+        }
+        
+        .jobs-section h2 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .job-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .job-tag {
+            background: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .job-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .job-tag:nth-child(1) {
+            background: #e9f7ff;
+            color: #0077cc;
+        }
+        
+        .job-tag:nth-child(2) {
+            background: #fff2e5;
+            color: #ff6600;
+        }
+        
+        .job-tag:nth-child(3) {
+            background: #f9f2ff;
+            color: #9933ff;
+        }
+        
+        .job-tag:nth-child(4) {
+            background: #e6fff2;
+            color: #00aa55;
+        }
+        
+        .job-tag:nth-child(5) {
+            background: #fff9e6;
+            color: #ffaa00;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            grid-column: 1 / -1;
+            color: #666;
+            font-size: 20px;
+        }
+        
+        .no-results i {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .freelancers-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .search-container input {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-globe-americas"></i>
+                Job Sphere
+            </div>
+            <div class="weather">
+                <i class="fas fa-cloud-sun"></i>
+                <span>25°C Mostly cloudy</span>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for freelancers by name, skill, or specialty...">
+                <button onclick="searchFreelancers()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <h2 class="section-title">Find Talented Freelancers</h2>
+            
+            <div class="card-container">
+                <div class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Choose Freelancers</h3>
+                    <p>Select from talented freelancers for your job. Browse profiles, check ratings and reviews to find the perfect match.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Pay Safely</h3>
+                    <p>Secure payment methods to protect your money. Only release payment when you're satisfied with the work.</p>
+                </div>
+                
+                <div class="card">
+                    <i class="fas fa-headset"></i>
+                    <h3>We're Here To Help</h3>
+                    <p>Our support team is available 24/7 to assist you anytime you need help with your projects or payments.</p>
+                </div>
+            </div>
+            
+            <div class="freelancers-grid" id="freelancersGrid">
+                <!-- Freelancer 1 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>Michael Chen</h3>
+                        <p>Web Developer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>Full-stack developer with 7+ years of experience building responsive web applications.</p>
+                        <div class="skills">
+                            <span class="skill">HTML/CSS</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">React</span>
+                            <span class="skill">Node.js</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.5 (128 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire Michael</button>
+                    </div>
+                </div>
+                
+                <!-- Freelancer 2 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>Sarah Johnson</h3>
+                        <p>Graphic Designer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>Creative designer specializing in branding, logos, and marketing materials.</p>
+                        <div class="skills">
+                            <span class="skill">Photoshop</span>
+                            <span class="skill">Illustrator</span>
+                            <span class="skill">UI/UX</span>
+                            <span class="skill">Branding</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.9 (97 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire Sarah</button>
+                    </div>
+                </div>
+                
+                <!-- Freelancer 3 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>David Wilson</h3>
+                        <p>Content Writer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>SEO content specialist creating engaging blog posts, articles, and web content.</p>
+                        <div class="skills">
+                            <span class="skill">SEO Writing</span>
+                            <span class="skill">Blogging</span>
+                            <span class="skill">Copywriting</span>
+                            <span class="skill">Research</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>4.2 (86 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire David</button>
+                    </div>
+                </div>
+                
+                <!-- Freelancer 4 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>Emma Rodriguez</h3>
+                        <p>Mobile Developer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>iOS and Android developer with expertise in cross-platform mobile applications.</p>
+                        <div class="skills">
+                            <span class="skill">Swift</span>
+                            <span class="skill">Kotlin</span>
+                            <span class="skill">React Native</span>
+                            <span class="skill">Flutter</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>4.8 (112 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire Emma</button>
+                    </div>
+                </div>
+                
+                <!-- Freelancer 5 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>James Thompson</h3>
+                        <p>Digital Marketer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>Digital marketing expert specializing in SEO, social media, and conversion optimization.</p>
+                        <div class="skills">
+                            <span class="skill">SEO</span>
+                            <span class="skill">Social Media</span>
+                            <span class="skill">Google Ads</span>
+                            <span class="skill">Analytics</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>4.6 (93 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire James</button>
+                    </div>
+                </div>
+                
+                <!-- Freelancer 6 -->
+                <div class="freelancer-card">
+                    <div class="freelancer-header">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Freelancer" class="freelancer-img">
+                        <h3>Sophia Martinez</h3>
+                        <p>UI/UX Designer</p>
+                    </div>
+                    <div class="freelancer-body">
+                        <p>User experience designer focused on creating intuitive and beautiful digital products.</p>
+                        <div class="skills">
+                            <span class="skill">Figma</span>
+                            <span class="skill">Wireframing</span>
+                            <span class="skill">Prototyping</span>
+                            <span class="skill">User Research</span>
+                        </div>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>5.0 (87 reviews)</span>
+                        </div>
+                        <button class="hire-btn">Hire Sophia</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="jobs-section">
+                <h2>Jobs in demand</h2>
+                <div class="job-tags">
+                    <div class="job-tag">Web Development</div>
+                    <div class="job-tag">Graphic Design</div>
+                    <div class="job-tag">Content Writing</div>
+                    <div class="job-tag">Digital Marketing</div>
+                    <div class="job-tag">Mobile App Development</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchFreelancers() {
+            // Get search input value and convert to lowercase
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Get all freelancer cards
+            const freelancerCards = document.querySelectorAll('.freelancer-card');
+            
+            // Variable to track if we found any results
+            let foundResults = false;
+            
+            // Loop through all freelancer cards
+            freelancerCards.forEach(card => {
+                // Get text content of the card and convert to lowercase
+                const cardText = card.textContent.toLowerCase();
+                
+                // Check if the card text contains the search input
+                if (cardText.includes(input)) {
+                    card.style.display = 'block'; // Show the card
+                    foundResults = true;
+                } else {
+                    card.style.display = 'none'; // Hide the card
+                }
+            });
+            
+            // If no results were found, show a message
+            const noResults = document.getElementById('noResults');
+            if (!foundResults) {
+                // Check if no results message already exists
+                if (!noResults) {
+                    const noResultsDiv = document.createElement('div');
+                    noResultsDiv.id = 'noResults';
+                    noResultsDiv.className = 'no-results';
+                    noResultsDiv.innerHTML = `
+                        <i class="fas fa-search"></i>
+                        <h3>No freelancers found</h3>
+                        <p>Try searching with different keywords</p>
+                    `;
+                    document.getElementById('freelancersGrid').appendChild(noResultsDiv);
+                }
+            } else if (noResults) {
+                // Remove no results message if it exists and we have results
+                noResults.remove();
+            }
+        }
+        
+        // Add event listener to search input to search when user presses Enter
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchFreelancers();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akshitha - Portfolio</title>
+  <style>
+     body {
+      margin: 0;
+      color: #00c897;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+
+    .hero img {
+      width: 160px;
+      border-radius: 50%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 15px 0 5px;
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: normal;
+      color: white;
+    }
+    .h3{
+            color:#00c897;
+    }
+    .hero p {
+      max-width: 600px;
+      margin: 15px auto;
+      color: white;
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color:white;
+    }
+
+    .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* Skills */
+    .skills span {
+      display: inline-block;
+      background: #00c897;
+      margin: 6px;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+      color:#1a1a1a;
+    }
+    .skills span:hover{
+        background:#1a1a1a;
+        color:#00c897 ;
+        cursor: pointer;
+    }
+    
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      text-align: left;
+    }
+    .project-card {
+      background: #1a1a1a;
+      color:#fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card h3 {
+      margin-top: 0;
+    }
+
+    /* Contact */
+    .contact a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background:#00c897;
+      color:#1a1a1a ;
+      text-decoration: none;
+      border-radius: 25px;
+      transition: background 0.2s;
+    }
+    .contact a:hover {
+        background:#1a1a1a;
+        color:#00c897 ;
+        cursor: pointer;
+    }
+    </style>
+    <body>
+
+  <!-- Hero -->
+    <div class="team-member">
+    <img src="https://img.freepik.com/premium-photo/stylish-3d-cartoon-girl-with-brown-hair-flaunts-her-smile-city-portrait_1283595-28209.jpg" alt="Akshitha">
+    <h1>Akshitha</h1>
+    <h2>Backend Developer</h2>
+    <p>
+      Dedicated backend developer focused on building secure, reliable, and scalable server-side applications. 
+      Skilled in Node.js, PHP, MySQL, Python, and API development.
+    </p>
+    </div>
+
+
+  <!-- Skills -->
+  <section class="section">
+    <h2>Skills</h2>
+    <div class="skills">
+      <span>Node.js</span>
+      <span>PHP</span>
+      <span>MySQL</span>
+      <span>Python</span>
+      <span>API</span>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>API Development</h3>
+        <p>Designed RESTful APIs for seamless data exchange between frontend and backend.</p>
+      </div>
+      <div class="project-card">
+        <h3>Inventory Management System</h3>
+        <p>PHP + MySQL based backend for managing stock, suppliers, and reports.</p>
+      </div>
+      <div class="project-card">
+        <h3>Authentication System</h3>
+        <p>Built secure user login and role-based access control with Node.js & JWT.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section contact">
+    <h2>Contact</h2>
+    <a href="mailto:akshitha@example.com">Email</a>
+    <a href="https://github.com/">GitHub</a>
+    <a href="https://linkedin.com/">LinkedIn</a>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerConnect - Job Portal</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAhFBMVEX///8AAAD8/PwEBAT19fX4+Pjx8fHi4uLMzMzu7u7a2to7OzvJycmFhYXl5eXp6em/v7+MjIynp6egoKB2dnZISEiysrJaWlpra2u6urrDw8MxMTGZmZkQEBCIiIjR0dFRUVEmJiY5OTlwcHBWVlYaGhpERER7e3uUlJQrKytiYmIZGRmCViVyAAAKKElEQVR4nO2dCZfiKBCAA/E+u+326FbHo2/3//+/BRKVggIyMxpgwvfezr5Wo1CBoqgqKlmWSCQSiUQikUgkEolEIpFIJBJxQCn7z3cjPEOzje8m+OeBjHw3wTetLTk0fS58kZz88t0In9BsR5gMyMB3Q3xCP7gIyLrJS8OYiSDPc/LtuyGeYLeezYSSgTAUGgfNWuuLDIa0kdOBiplQkJPHRsogGxGZne/m+IBZRzKHtu8GeeAERJCTN98NqhuaLYjKS9NUwlQTASF9342qE7YQDhEZzBvkSqB8WdRp2AL5wCxkRAZNciVMkFFQMPXdtFrg/kNMGVxUQjN4JvpEOE+Hse/G1cPMOAo4L76bVwcDqwgI6fpu4P1Rtgk68btYHa4Qms0dIiBk6bASopfRl1MEhJlKdkIXQttu5jxVEAEhC+t3jILfZS/Xs5bhVlFmHxqXxStme5F9a+fpsLpn829Cj/VibNLtq0rDgJBnw3jv8qkUfDSCZkfeiRPmGmP6cvRTQQLrHv7duyV/NwZTsjSB9vh4pt9OESCBaL7avH4Wb8fgaqHnvgwf0Pene6sEln10fX04++Hz8NcFxuOlPwYpcDeaQTVucVP55RqJeLpn029GX+rTJzq1+ydMCOyVFepOez1Kn2rdt/G34lnu2TuqxnWPKucFG+e7uSywWPaVXXiXVxOka1wryB/KhSaA8Iu60AUfi5OFMjMAjvRfbeT+qibjDPmqlup3fL5/828CBdvjXMhD6yCTSVd2J31OkP0WW2YVv2M3hkWhQLcHhz3eR6UD/C7nQkjKNkl8crTWviWWYcDB/CTPiM5/LZTCFrGnpphdPbl/028HujHQtoM0m3J3wr6vj3DU4fZVT+NvRBe1gvYTrbN0rCXisHnQxT0tkSwKBdTkO9b2Aqy/+iD4xu3IcTwKUdBH+sD79alsq6m+HAyOBJdBKzIZSLsGRQxPlk0Pf8O4sYwvsblt6gqZ26Z199N02TayQcCxhFLMcZSFGCqoKrE7GcOErs2+w2fMeKZZy+Jr+/TQhb/n1dQdZhr+YLvJwQELyZcY/GuhszTLgBDdvWL1u588tP8WdI0DgZA3dS60Ub/KhajMIxl8feRd/Vb1AZsHNhFsYjMNLrQPBhGArTS3kXC/0oV1rBLIcLWYI8vcL7sIYlWIBehip6rDtkl5nokshZVmA3ncdpRZzv8AzgI2EfqqryRX/5J9yXQQvmpYyFYglpILxzWVDnKYAJGlGbKqBgZfCkBsXB3nO+U2vmjrAZw/OVnJmyw2sAI/+cNndg73+VO5O8ooYBNhAzuc87sONem2I1/yJkIxoR4Q5u6fddFREHQGs6GntF3L2T0OijSFK9LQp1lPHAEjw0Adi0XTxa5vCHp6KgZ7oQ6Bw4Rqy8aqLe5w+U2cN/m7xD5MvBFiVi8FViEIjPa3VxGAK9rqMY7rdRchHEB8UfKvbJz5X3VDsw4IqU/kt87zW8kcaM3VbWLv3K3regL0h+Syz8kyuOhrD45puNsfi84uJEXG+tqBWctsP30NQNCzC0aKvbDX4BXbXViaUXMCPoHm8WkM5gcTgRZF6sAefbNrPqXxTrEfCYfOUhnVuTIb2C76F+xh56D0h2lSMLgpT2WcyhepwSv2I6cg5oMIDGLpt3A2zFbwGs0+5hyVHi2h3/GIXPKfWGz9zgjWHYpu+nKhuKUPyhfxiYDlocxb6pdLlz/i/oXvzLcMiogI0jhR1UBSgXBFOKJneZgQgJlNZWXQ03+j+Bk1alMzrIkbtGmCHzynlmYt8zmWvRafL2l9mH9o5tVUMEdEOIZsAbq3nGN5N/ySNcN17tF0dmVg47GUpdlxyKYD7kBeOPKcsUSee8PHXteebMnR7g9VstYQsMwzo4f6wvuk9vlQagLrzcmFjaNeaVDvEroP2RayumCL5d6HgVmvXWRAkJs6c2XvYy7XN+ISN/9nXm9Cu5YzZ2ybohIe3NcQzY1sPwgnMa7zdEd1GSinDarJQDnbNqswE+qXwXkuuNrGo6uwXc65IDgA/5lQoxXmQs3GEi0Wxir3R1ns3DpR9Af+mksnlmmg9erEimsjKU70A1xrY3ERtK+qrY1eNg4VlZWi5y02ksQMdMgRj/RiI5VM3Cc2OVAvWmxlGbg4WG3lvd/IfLUDi3IbadZ22xYckNsb7p6J0TXsncFrSvEj494ZfNM8k/0Hoe6dC/kbfCgAoOeNPpT9/PpyDuJV7HeC9aGIMYj60uby4BVBQ/ki3JfW7n9Il6j7TsyX9hGAL62gs9Tnw3QEX3P5VAkZtrOyrub1S6LwqZZs1OY9aerS7lvPmQi4D2kBXnP71kMYAgKqxVjE/FdMXHuMRbgSaXm25XKjHTGWwKoudsCqz50nNHuH6l+Nte2lt5eXt2AEzhJrw3JdvYLEXEGhTEfMdXXtTj+XL/owx1wDGwQcLPYuV4YrhYDG3r8y6Y0euCii2LtAz8FQk41gDoaomyZmPbijUJlqORgk3BwMjpqLA1NKTLk46q4XFhnFcnHaAS0IOlpOlrqr0nOyXpWxoSZ2ruTdQPg5WRnf5S7gn+rOQM3NU08pqSLIo8vNoxnYKFfJ0YR7vheiySC6HE2IIVfX3AvUWRLTEV+NEdKh3HaeyeCZijhnu1ruvsRGO+hesK612TcE2eRchKCd4RCMjZ7qp9iUwJnfOsuTiarTRkdjrHWHf+9MV8uayxB+gTAEiirEswzg2T7uOOg6KmhFWJOect9X5TOeNNu53O1IGD98qp/1dZ/p4kR41hc/883vthIRocJn7CbCM9+2s/8AZiy7znQVRHb2n5prQCg7f64ND/KamIP/AUJyIrsx1gLRsqyVQyti3Xzd4OXUIqsFgteEeddrwgjbEHx0y5bNf6EmTMXaQFnWnxNlIvwUHY2/NhBaI6qjO8D0s8D786TvvyHfEbAbUQOpFbYz1ApTBFU4zMW/PT3AGJEjQa8Zp5fIoiJqT8An1eVvRlS1giiUIKHaMHjEcuaQGT9SLWglBzCPRyMoe+Y3bBZjlWW1M1o01hqSFNZU/41aolu8liiQViTP/PyLmrKnjvZZGmVN2e+yQ4Qcb1FbmI+MuGoL07+tMf3eR+NoFyls79yBm1BO9T+vNW6406+l/RzDA1tEssh9as6LNSKCmvM82j422bSVnj2Qm+3BOJ49kJ3WM2RjIKj4DArieAZF8FVy0rNI3DThmTTp2UQVaMAzqtykZ5Vl6Zl1gsY/u5Cn2lufYdkAdcBp+rNMBfgzbfNwM3DvwRj1oTTp2cbmZ1w3isY/61wuiHYlhgex3RjFaR5b4diboGwcDrHviP8ImLcWYd7ZLbgukM1aFmVaVwfrMMADWjVA5XPcg9AKg9bHFymcrC7v2b8M/U8I4dDIiXCmh9QPahx8NjTCb2KBWUpNcKLaeWmW0wCDZpGlId8BGkgpj0QikUgkEolEIpFIJBKJRCKRqML/REBn/0QWvfcAAAAASUVORK5CYII=">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color:black;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding-top: 250px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #1a1a1a,#00c897 );
+            color: #e0e0e0;
+            padding: 1.5rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .logo span {
+            color:#00c897 ;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+                header{
+                position:fixed;
+                top:0;
+                left:0;
+                width:100%;
+                background:black;
+                z-index:1000;
+          }
+
+           a {
+                text-decoration: none;
+            }
+
+   
+          nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px ;
+            }     
+
+          nav .logo{
+                width:120px;
+                padding-left: 10%;
+            }
+
+        .logo {
+              font-size: 50px;
+              display:flex;
+              font-weight: bold;
+            }
+
+        .logo span {
+              background: white;  
+              color: #134e4a;   
+              padding: 5px 10px;
+              border-radius: 5px;
+              margin-right: 5px;
+            }
+
+        nav ul {
+             list-style: none;
+             display: flex;
+             gap: 25px;
+           }
+
+        nav ul li a {
+             color: white;
+             font-weight: bold;
+             transition: 0.3s;
+           }
+
+         nav ul li a:hover {
+            color: #a7f3d0;
+           }
+    
+         .btn {
+            background: white;
+            color: #134e4a;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+           }  
+
+        .btn:hover {
+            background: #a7f3d0;
+            color: #134e4a;
+          }
+
+        
+        /* Search Section */
+        .search-section {
+            background: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: -30px auto 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .search-title {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            color: #e0e0e0;
+            font-weight: 600;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .search-input {
+            padding: 0.8rem 1.2rem;
+            background: #2d2d2d;
+            color:#e0e0e0;
+            width: 70%;
+            border: 2px solid #444;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #00c897 ;
+        }
+        
+        .search-btn {
+            padding: 0.8rem 1.5rem;
+            background: #00c897 ;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s;
+          
+        }
+        
+        .search-btn:hover {
+            background: #00c897 ;
+        }
+        
+        /* Filters */
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .filter-item {
+            padding: 0.5rem 1rem;
+            background: #2d2d2d;
+            border: 1px solid #444;
+            color:#e0e0e0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-item:hover {
+            background: #3d3d3d;
+        }
+        
+        .filter-item.active {
+            background: #00c897 b;
+            color: white;
+            border-color: #00c897 ;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #fff;
+            font-size: 1.8rem;
+        }
+        
+        /* Job Listings */
+        .job-listings {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .job-card {
+            background: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+        }
+        
+        .company-logo {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+
+            margin-right: 1rem;
+            border: 1px solid #f0f0f0;
+            padding: 0.3rem;
+        }
+        
+        .job-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: #2d2d2d;
+            border-bottom: 1px solid #444;
+        }
+        
+        .job-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            color: #00c897 ;
+        }
+        
+        .company-name {
+            color: #00c897 ;
+            font-weight: 500;
+        }
+        
+        .job-details {
+            padding: 1.5rem;
+        }
+        
+        .job-info {
+            margin-bottom: 1.2rem;
+        }
+        
+        .job-info div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .job-info i {
+            color: #00c897 ;
+            margin-right: 0.7rem;
+            width: 20px;
+        }
+        
+        .job-tags {
+            display: flex;
+            background:#2d2d2d;
+            color:#00c897 ;
+            border:1px solid #444;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .job-tag {
+            padding: 0.3rem 0.7rem;
+            background: #121212  ;
+            color: #fff ;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+                .profile-btn {
+            margin-top: 15px;
+            display: block;
+            padding: 0.8rem;
+            background:#00c897 ;
+            color:#1a1a1a;
+            border-radius: 4px;
+            border:none;
+            text-decoration: none;
+           transition: background 0.3s; 
+            font-weight: 600;
+             text-align: center;
+             cursor: pointer;
+               font-size: 1rem;
+               width: 100%;
+        }
+        
+      
+            
+          
+            
+                 
+        .apply-btn:hover {
+            background: #1a1a1a ;
+            color:#00c897 ;
+
+        }
+
+                  /* footer section */
+    footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+           
+        }
+        
+        .footer-top img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+        }
+        
+        .footer-top .website-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 15px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .website-name{
+            color:white;
+        }
+
+
+        
+
+    </style>
+</head>
+<body>
+
+   <header>
+
+          <nav>
+        <div class="logo"> <span> Job </span> Sphere
+
+        </div>
+
+        
+        <ul>
+
+      <li><a href="http://127.0.0.1:5500/html/home.html#" target="_self">Home</a></li>
+
+      <li><a href="http://127.0.0.1:5500/html/team.html" target="_self"> Our Team</a></li>
+
+      <li><a href="http://127.0.0.1:5500/html/deep1.html" target="_self">Browse Jobs</a></li>
+
+      <li><a href="http://127.0.0.1:5500/html/contact.html" target="_self">Contact</a></li>
+
+      <li><a href="http://127.0.0.1:5500/html/login.html" class="btn">Login</a></li>
+
+      </ul> 
+      </nav>
+
+      </header>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <h2 class="search-title">Find Your Perfect Job</h2>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Job title, keywords, or company">
+            <button class="search-btn">Search</button>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-item active">All Jobs</div>
+            <div class="filter-item">Remote</div>
+            <div class="filter-item">Full-time</div>
+            <div class="filter-item">Part-time</div>
+            <div class="filter-item">Internship</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h2 class="section-title">Latest Job Openings</h2>
+        
+        <div class="job-listings">
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBvzd5yBMU4Xwi_ui9zEVw2-sFwLSsKjSyCUaJxANvQqFd7Dx5i4m_rgGfH6awZDkwDylwFuQ7hMXidQM61Q5j78wwHLx4O3oe3RoeWfw08w" alt="Google" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Frontend Developer</h3>
+                        <p class="company-name">Google</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Mountain View, CA (Remote)</div>
+                        <div><i>💰</i> &#8377;120,000 - &#8377;150,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">HTML/CSS</span>
+                        <span class="job-tag">JavaScript</span>
+                        <span class="job-tag">React</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+            
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://www.logo.wine/a/logo/Microsoft_Store/Microsoft_Store-Logo.wine.svg" alt="Microsoft" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Backend Engineer</h3>
+                        <p class="company-name">Microsoft</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Redmond, WA (Hybrid)</div>
+                        <div><i>💰</i> &#8377;130,000 - &#8377;160,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Node.js</span>
+                        <span class="job-tag">Python</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+            
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Amazon" class="company-logo">
+                    <div>
+                        <h3 class="job-title">UX Designer</h3>
+                        <p class="company-name">Amazon</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Seattle, WA (On-site)</div>
+                        <div><i>💰</i> &#8377;110,000 - &#8377;140,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">UI/UX</span>
+                        <span class="job-tag">Figma</span>
+                        <span class="job-tag">User Research</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+            
+            <!-- Job Card 4 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAzFBMVEUAAAD///9DQ0P7/PvKzMnZ3d6tsKzz9PKLjYrX2db4+fh7fnrm5+Wkp6PHycYVGRTR09Cvs7UOEA1KTUqQk4+4ureqrKoeIR03OjYcHhwYGRducGycn5t1eHQ8PjuRkpAoKyZXWlcHDgNiZWAuMC1RUlASFhBYVk/i4d63trFkYl0sKiQXFQseHBZ1cmzt6+c5MiwXDQB/eXhoYGEfGBgVDQ6hm5tWUlJEPz+PiYmDf36ppqkiHyM5Njl4dHjHxMcdIyUTGBo0PD9DS00mZxnlAAAEiUlEQVR4nO3c21raQBQF4IwBE0KEpArSAirVWmw9tNV6rDXa93+nCjF8CTOgldnsbbr+67nYi2SOJHEcAAAAAAAAAAAAAAAAAAAAAAAAAPifvFvfaLW5i6CzWa8ESqngHXchRDqrnkq95y6FRLOlJja5i6HgK1XqhJ1aPqD7gbse67pBPqA64a7Hug1VVOMuyLbeVEDV4q7IMi2g6nOXZFddC6i2uGuyal0PWLJuGOoJt7lrsmpND+jucBdlU0cPWLKRtGJI2OEuyqZB6S9hw5CwyV2UTVuGgD53UVbpqxkVcddk11AL6O1x12TVjn4JB9w12dXXAna5S7JsdTpgyfYU2lwRlO0KOk7hbEYNy7VnGitsK9a4q6GQSxi9/cVos6mf1EdP8dzG9CSxv9n8uJy6bNjs9irD8OQkDGstvxBlPNJ4kZ+/flv9cWvPC4e1tf5buLJ+rXgU6lX8ydXZ7fndlfxfFIN26BZau8MN2cffnZYyierGxm3P2LqyvuyyX2zPnG+ssVv8e2nHr81uHAnN2HNn15zerp/SO3D/kx/Nb6tWBW4aV/R9gyHl43BSC80351TLXe5A0wzHvAvqcUcq0tbUFlS4Q+WZjl8WV5MzcZiOCG0I97mTPaG5giND7mipA7KAQs6ppv/PtWuVO575FNuexgp3PuOfZdaIOOag7IQiZovPhAFl/GPzksXoKx1wZxs7pgvY4M6WmrPHW5CQuZ6uFwZfubOl6AbSY+5oqcOXbGVfRUgndL5QBVRC7lG6m1TGROEQLtgOuZM9OaIKKKUX0k33X7iTZdpEAb0j7mQZqsMLOWdsJ0QJ5TyLSRRQTjekSuhecgfLfCVKKGeguSRKKOftkhWihCF3sAkkfK3y36WelHU3WcJAzMNgpiearRAz43+jSnjNnSzznSqhmO0h2bpUznRBdtIm5nmh6PlaX0fMFxbIjto87mSZc6qE6gd3tCenZAmljDVnZAnFTIlkg6nyfnJnS1E9CqXEnOvTDTVSBpsLwoQyzqPO6DriY1c84443QraqGQklRLyiTKg8ATcq1TY/85s7IOkDQ2MH7PMi5Xwx5nGvbqjOvXNC5pmR+jYdcS84E9KOpinm7eISEp7zJpzzMpctvAGXMNbcMCekXbmN/OJOSHeWkYq5AzpOlTSge8udz3F+kyYUcAlpL2LA3gtHKHsi81yYobuIUk6/6ebEU+5omZgo4B13sAmiIykZw0zqmiThFXesPIq1m4j3RyduCRIKWM3k2f/igLivZNm+T+U8kZFJguer/gfePXcg3a7VhCK/xXdjMaCcp9kL7P1jKuMVYANbL0JVuYPMlNhZvYUCR5nMg40B1Uu4Y8zzsPhVDBPuEPPtze6LbhjF2/617/fi6uwfoppwR3iWeUR17+r5j3jcD3rmkwE5W8I5tg133naitxvc6Q3fyIehk6n39qqzPlGSTB0O3CXLLHMhD/Gko3nxn3kt/WowafiwrPLsGNTX4rjXnxtvbK/rt+P2tciFKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBn9BcakTE8Z0+SZAAAAAElFTkSuQmCC" alt="Apple" class="company-logo">
+                    <div>
+                        <h3 class="job-title">iOS Developer</h3>
+                        <p class="company-name">Apple</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Cupertino, CA (Remote)</div>
+                        <div><i>💰</i> &#8377;140,000 - &#8377;170,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Swift</span>
+                        <span class="job-tag">Objective-C</span>
+                        <span class="job-tag">iOS SDK</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+            
+            <!-- Job Card 5 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Facebook" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Data Scientist</h3>
+                        <p class="company-name">Meta</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Menlo Park, CA (Hybrid)</div>
+                        <div><i>💰</i> &#8377;125,000 - &#8377;155,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Python</span>
+                        <span class="job-tag">R</span>
+                        <span class="job-tag">Machine Learning</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+            
+            <!-- Job Card 6 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">DevOps Engineer</h3>
+                        <p class="company-name">Netflix</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+        
+                   <!-- Job Card 7 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZlJ0j-L1_oXBFcgEme5FBnVHe1gIx9-f9Lw&s" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Assemble Engineer</h3>
+                        <p class="company-name">Tata Consultancy Services (tcs)</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div> 
+
+                        <!-- Job Card 8 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/jpeg;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Manager</h3>
+                        <p class="company-name">Swiggy</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+
+                        <!-- Job Card 9-->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">DevOps Engineer</h3>
+                        <p class="company-name">Netflix</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+
+                        <!-- Job Card 10 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">DevOps Engineer</h3>
+                        <p class="company-name">Netflix</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+
+                        <!-- Job Card 11 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">DevOps Engineer</h3>
+                        <p class="company-name">Zomato</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+                                    <!-- Job Card 12 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Stock Manager</h3>
+                        <p class="company-name">RED Tape</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+                                    <!-- Job Card 13 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://static.vecteezy.com/system/resources/previews/024/455/431/non_2x/us-polo-assn-brand-logo-blue-symbol-clothes-design-icon-abstract-illustration-free-vector.jpg" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Designer</h3>
+                        <p class="company-name">U.S. Polo</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+                                    <!-- Job Card 14 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://crystalpng.com/wp-content/uploads/2023/03/allen-solly-logo.png" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Fashion Designer</h3>
+                        <p class="company-name">Allen Solly</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>                        
+            
+            
+            <!-- Job Card 15 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="data:image/png;base64,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" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Full Stack Developer</h3>
+                        <p class="company-name">Google</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+                                    <!-- Job Card 16 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <img src="https://www.logo.wine/a/logo/Microsoft_Store/Microsoft_Store-Logo.wine.svg" alt="Netflix" class="company-logo">
+                    <div>
+                        <h3 class="job-title">Full Stack Developer</h3>
+                        <p class="company-name">Microsoft</p>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <div class="job-info">
+                        <div><i>📍</i> Los Gatos, CA (Remote)</div>
+                        <div><i>&#128184;</i> &#8377;150,000 - &#8377;180,000</div>
+                        <div><i>⏰</i> Full-time</div>
+                    </div>
+                    <div class="job-tags">
+                        <span class="job-tag">Kubernetes</span>
+                        <span class="job-tag">Docker</span>
+                        <span class="job-tag">AWS</span>
+                    </div>
+                    <a href="http://127.0.0.1:5500/html/join.html" target="_main" class="profile-btn">Apply Now</a>
+                </div>
+            </div>
+
+
+        
+        </div>
+    </main>
+
+
+     <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <img src="data:image/png;base64,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">
+                <div class="website-name">JobSphere</div>
+            </div>
+            
+            <div class="footer-links">
+                <a href="http://127.0.0.1:5500/html/home.html#" target="_self">Home</a>
+                <a href="http://127.0.0.1:5500/html/deep1.html" target="_self">Jobs</a>
+                <a href="#">For Employers</a>
+                <a href="http://127.0.0.1:5500/html/deep1.html" target="_self">About Us</a>
+                <a href="http://127.0.0.1:5500/html/contact.html" target="_self">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://in.linkedin.com/" target="_self"><i class="fab fa-linkedin"></i> linked-in</a>
+                <a href="https://x.com/" target="_self"><i class="fab fa-twitter"></i>twitter</a>
+                <a href="https://www.facebook.com/" target="_self"><i class="fab fa-facebook"></i>facebook</a>
+                <a href="https://www.instagram.com/" target="_self"><i class="fab fa-instagram"></i> instagram</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 JobSphere. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    
+</body>
+</html>
